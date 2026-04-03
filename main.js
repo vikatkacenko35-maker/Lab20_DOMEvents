@@ -43,7 +43,23 @@ clearButton.addEventListener("click", () =>{
 });
 form.addEventListener("submit", (even) =>{
     event.preventDefault();
-    const name = usernameInput.value;
-    const age = ageInput.value;
+    const name = usernameInput.value.trim();
+    if (name === ""){
+        result.textContent - "Ошибка: Имя не может быть пустым!";
+        result.style.color = "red";
+        usernameInput.focus();
+        return;
+    }
+    const age = Number(ageInput.value);
+    if (isNaN(age) || age <= 0 || age > 120){
+        result.textContent = "Ошибка: введите корректынй возвраст (от 1 до 120)!";
+        result.style.color = "red";
+        ageInput.focus();
+        ageInput.value = "";
+        return;
+    }   
+    result.textContent =  `Данные сохранены!`;
+    result.style.color = "green";
     result.textContent = `Имя: ${name}, Возвраст: ${age}`;
+    form.reset();
 })
