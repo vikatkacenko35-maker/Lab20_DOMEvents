@@ -1,6 +1,14 @@
 console.log(document);
 const title = document.getElementById("title");
 const text = document.querySelector(".text");
+const input = document.getElementById("nameInput");
+const button = document.getElementById("showName");
+const output = document.getElementById("output");
+const clearButton = document.getElementById("clearButton")
+const form = document.getElementById("userForm");
+const usernameInput = document.getElementById("username");
+const ageInput = document.getElementById("age");
+const result = document.getElementById("formresult");const btn = document.getElementById("btn");
 console.log(title);
 console.log(text);
 title.textContent = "Dom change";
@@ -11,16 +19,13 @@ title.style.padding = "10px";
 text.style.fontSize = "18px";
 text.style.fontStyle = "italic";
 text.style.color = "darkgreen";
-const btn = document.getElementById("btn");
+
 btn.addEventListener("click", () => {
     alert("Кнопка нажата!");
     btn.style.backgroundColor = "4CAF50";
     btn.style.color = "white";
 });
-const input = document.getElementById("nameInput");
-const button = document.getElementById("showName");
-const output = document.getElementById("output");
-const clearButton = document.getElementById("clearButton")
+
 button.addEventListener("click", () => {
     if (input.ariaValueMax.trim() = ""){
         output.textContent = `привет, ${input.value}!`;
@@ -36,3 +41,9 @@ clearButton.addEventListener("click", () =>{
     output.style.color = "";
     input.focus();
 });
+form.addEventListener("submit", (even) =>{
+    event.preventDefault();
+    const name = usernameInput.value;
+    const age = ageInput.value;
+    result.textContent = `Имя: ${name}, Возвраст: ${age}`;
+})
